@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         // MARK: -  4️⃣ functionCall داخل المتغير  secretNameLetter قم باستدعاء الدالة
         
        // var functionCall = secretNameLetter(membernamearray: membersNamesArray)
-        var functionCall = secretNameLetter(membernamearray: membersNamesArray)
+        let functionCall = encryptWith(emoji: false, array: membersNamesArray)
         // MARK: -   النهاية
         
         
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
         // MARK: -  5️⃣ functionCall داخل المتغير  secretNameEmoji قم باستدعاء الدالة
         
       //  var functionCall = secretNameEmoji(membernamearray: "")
-        var functionCall = secretNameEmoji(membernamearray: membersNamesArray)
+        let functionCall = encryptWith(emoji: true, array: membersNamesArray)
         // MARK: -   النهاية
         
         secretSocietyNameLabel.text =  functionCall
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         var firstletterarray: [String] = []
         for memberEmoji in membersNamesArray {
             firstletterarray.append(String (memberEmoji.prefix(1)))
-            var emoji = emojiDictionaryEnglish[String (memberEmoji.prefix(1))]
+            let emoji = emojiDictionaryEnglish[String (memberEmoji.prefix(1)).uppercased()]
             emojiletterarray.append(emoji!)
             print(emojiletterarray.joined())
         }
@@ -96,7 +96,15 @@ class ViewController: UIViewController {
     
     // MARK: -   النهاية
     
+    //Bonus
     
-    
+    func encryptWith(emoji: Bool, array: [String]) -> String {
+        if emoji{
+            return secretNameEmoji(membernamearray: array)
+        }
+        else{
+            return secretNameLetter(membernamearray: array)
+        }
+    }
 }
 
